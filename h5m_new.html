@@ -93,7 +93,7 @@ input[type=color]{padding:0; }
 			</p>
 			<p>
 				<label for="anim-duration">选择背景</label>
-				<input type="file" id = "addBg" accept="image" name="file" >
+				<input type="file" id = "addBg" accept="image" name="file" multiple="multiple" >
 			</p>
 		</div>
 		<div id="center">
@@ -121,9 +121,9 @@ input[type=color]{padding:0; }
 			</p>
 			<h1>文本设置</h1>
 			<p>
-				<label >颜色:</label> 
-				<input type="color" id="font-color"/> 
-				<label >字体大小:</label>
+				<label >颜色</label>
+				<input type="color" id="font-color"/>
+				<label >字体大小</label>
 				<input type="range" name="points" min="1" max="10" id="font-size" step=".5" value="2" />
 				<label class="font-size-dispaly">2em</label>
 			</p>
@@ -294,9 +294,6 @@ input[type=color]{padding:0; }
 			})
 			$('#preview').on('click',function(){
 				h5m.preview();
-			})
-			$('#addBg').on('change',function(){
-				h5m.addBg(this.files);
 			})
 			//元素操作
 			$('#addEl').on('change',function(){
