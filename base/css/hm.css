@@ -1,9 +1,12 @@
+.hm-hide{
+    display: none;
+}
 /*hm-container*/
 #hm-container
 {
     width: 100%;
     height: 100%;
-
+    
     background-position: center;
     background-size: cover;
     position: absolute;
@@ -36,6 +39,9 @@
 }
 .hm-page .hm-el img
 {
+    display: block;
+}
+.hm-page.active {
     display: block;
 }
 .hm-page.active .hm-el

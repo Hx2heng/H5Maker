@@ -9,7 +9,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
 <meta name="Description" content="网页描述"/>
 <meta name="Keywords" content="关键字"/>
-<title>H5M</title>
+<title>H5M_new</title>
 <link rel="stylesheet" type="text/css" href="dev/css/base.css">
 <link rel="stylesheet" type="text/css" href="lib/css/animate.min.css">
 <link rel="stylesheet" type="text/css" href="dev/css/hm.css">
@@ -41,9 +41,10 @@ input,select{padding:10px;border:1px solid #C4C4C4;border-radius: 4px}
 h1{font-weight: bold;background: #eee;padding: 10px;text-align: center;}
 input[type=range]{padding:0;    height: 10px}
 input[type=color]{padding:0; }
+input[type=file]{    width: 89px; }
 /*page*/
 #main{width: 1220px;margin:0 auto;}
-#left{float: left;width: 400px;padding:20px;border-right: 1px solid #eee;}
+#left{float: left;width: 410px;padding:20px;border-right: 1px solid #eee;}
 #center{float: left;width: 400px}
 #right{float: left;width:410px;padding:20px;border-left: 1px solid #eee;}
 .phone{width: 340px;margin: 20px auto;padding:60px 10px;border:1px solid #999;border-radius: 20px}
@@ -81,6 +82,10 @@ input[type=color]{padding:0; }
 				<button id="build">发布</button>
 				<button id="delete" class="btn-warning">删除</button>
 			</p>
+			<p>
+				<label for="anim-duration">设置全局背景</label>
+				<input type="file" id = "addBg" accept="image" name="file" >
+			</p>
 			<h1>页操作</h1>
 			<p>
 				<button id="addPage">新建页</button>
@@ -92,14 +97,17 @@ input[type=color]{padding:0; }
 				<div class="clear"></div>
 			</p>
 			<p>
-				<label for="anim-duration">选择背景</label>
-				<input type="file" id = "addBg" accept="image" name="file" >
+				<label for="anim-duration">设置当前背景</label>
+				<input type="file" id = "addPageBg" accept="image" name="file" >
+				<button id="delPageBg" class="btn-warning">删除背景</button>
 			</p>
 		</div>
 		<div id="center">
 			<!-- body内容 -->
 			<div class="phone">
-				<div class="phone-screen"><div id="hm-container"><div class="hm-wrap"><div class="hm-page"></div></div></div></div>
+				<div class="phone-screen"><div id="hm-container"><div class="hm-wrap"><div class="hm-page">
+					<div class="hm-content"></div>
+				</div></div></div></div>
 			</div>
 		</div>
 		<div id="right">
@@ -133,7 +141,7 @@ input[type=color]{padding:0; }
 
 			<p>
 				<label for="animations">添加动画</label>
-				<select id="animations" >
+				<select id="animations"  selected >
 					<optgroup label="Attention Seekers">
 						<option value="bounce">bounce</option>
 						<option value="flash">flash</option>
@@ -276,14 +284,17 @@ input[type=color]{padding:0; }
 						data:{data: JSON.stringify(data)},
 						success:function(res){
 							//alert(res);
-							console.log('ajax'+res);
+							console.log(res.val);
 
 						},
 						error:function(){
-
+                            console.log(111);
 						}
 					});
 				});//删除当前选中元素
+			})
+			$('#addBg').on('change',function(){
+				h5m.addBg(this.files);
 			})
 			//页操作
 			$('#addPage').on('click',function(){
@@ -295,8 +306,11 @@ input[type=color]{padding:0; }
 			$('#preview').on('click',function(){
 				h5m.preview();
 			})
-			$('#addBg').on('change',function(){
-				h5m.addBg(this.files);
+			$('#addPageBg').on('change',function(){
+				h5m.addPageBg(this.files);
+			})
+			$('#delPageBg').on('click',function(){
+				h5m.delPageBg();
 			})
 			//元素操作
 			$('#addEl').on('change',function(){
@@ -337,10 +351,10 @@ input[type=color]{padding:0; }
 			})
 
 			//动画设置
-			$('#animations').on('change',function(e){
-			e.preventDefault();
-			var anim = $('#animations').val();
-			h5m.addAnimate(anim);
+			$('#animations').on('click',function(e){
+				e.preventDefault();
+				var anim = $('#animations').val();
+				h5m.addAnimate(anim);
 			})
 			$('#del-anim').on('click',function(){
 				h5m.delAnimate('one');//删除当前选中元素的动画

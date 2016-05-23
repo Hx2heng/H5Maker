@@ -41,6 +41,7 @@
 		$html=str_replace('{{$imgs}}',$imgPath,$str);
 		file_put_contents($buildPath.$proName.'/index.html',$html);
 		// base64 另存为图片
+
 		for ($i=0; $i<count($data->imgList); $i++) {
 		  	$base64_url =$data->imgList[$i]->src;
 		  	$base64 =substr(strstr($base64_url,','),1);//去除头部
@@ -48,7 +49,8 @@
 		  	file_put_contents($buildPath.$proName.'/images/'.$data->imgList[$i]->id.'.'.$data->imgList[$i]->type, $img);
 		}
 
-		echo 'ok';
+        echo json_encode(array('val' => "ok"));
+        exit;
 	} 
 	else {
 		echo '需创建的文件夹test已经存在';
