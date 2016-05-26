@@ -133,6 +133,10 @@
 			_this.gel('container').css('background-image','url('+img.src+')');
 		});
 	}
+	//删除全局背景
+	hm.prototype.delBg = function(){
+		this.gel('container').removeAttr('style');
+	}
 	//添加当前页背景
 	hm.prototype.addPageBg = function(files){
 		var _this = this;
@@ -222,7 +226,7 @@
 		var _this = this ;
 		var multiple = this.multiple,
 			top = _this.gel("wrap").offset().top,
-			left = _this.gel("wrap").offset().left;
+			left = _this.gel("wrap").offset().left+7.5;
 		
 		this.isDraging = false;
 		this.gel("wrap").on('mousedown',function(e){
@@ -242,19 +246,15 @@
 			_this.isDraging = true;
 			this.elTop = e.clientY - $(this).offset().top;
 			this.elLeft = e.clientX- $(this).offset().left;
-			console.log(this.elTop);
 		})
 		this.gel("wrap").on('mousemove','.hm-el',function(e){
 			if(!_this.isDraging) return false;
 			var e = e || window.event;
 
 			$(this).css({
-				// top:(e.clientY+sTop-top-elHeight/2)/multiple,
-				// left:(e.clientX-left-elWidth/2)/multiple
 				top:(e.clientY-top-this.elTop)/multiple,
 				left:(e.clientX-left-this.elLeft)/multiple
 			});
-			// console.log(e.clientX,e.clientY,top,top2,top3,left)
 		})
 		this.gel("wrap").on('mouseup','.hm-el',function(e){
 			_this.isDraging = false;
@@ -270,13 +270,29 @@
 			this.selectEl =el;
 			el.addClass('selected');
 			this.fire("selectEl",el);
+
 			return el;
 		}
 		else{
 			this.selectEl = {};
+			this.fire('unSelectEl');
 			return false;
 		}
 		
+	}
+	//判断是否选中
+	hm.prototype.isSelected = function(arg){
+		if(!arg){
+			throw new Error('未传递参数');
+			return false;
+		}
+		else if((Object.prototype.isPrototypeOf(this.selectEl) && Object.keys(this.selectEl).length === 0)){
+			throw new Error('未选中元素');
+			return false;
+		}
+		else{
+			return true;
+		} 
 	}
 	//设置选中元素的位置
 	hm.prototype.indexSet = function(type){
@@ -289,6 +305,16 @@
 			else if(type = 'down'){
 				this.selectEl.insertBefore(prevEl);
 			}
+		}
+	}
+	//设置元素图片缩放
+	hm.prototype.setImgSize = function(size){
+		if(this.isSelected(size)){
+			this.selectEl.find("img").css({
+				'transform':'scale('+size+')',
+				'-webkit-transform':'scale('+size+')'
+			});
+			this.selectEl.attr('img-scale',size);
 		}
 	}
 	//添加动画
@@ -330,20 +356,6 @@
 		if(this.isSelected(type)){
 			this.selectEl.attr('class','hm-el selected');
 		}
-	}
-	//判断是否选中
-	hm.prototype.isSelected = function(arg){
-		if(!arg){
-			throw new Error('未传递参数');
-			return false;
-		}
-		else if((Object.prototype.isPrototypeOf(this.selectEl) && Object.keys(this.selectEl).length === 0)){
-			throw new Error('未选中元素');
-			return false;
-		}
-		else{
-			return true;
-		} 
 	}
 	//预览
 	hm.prototype.preview = function(){

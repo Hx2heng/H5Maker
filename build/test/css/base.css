@@ -1,0 +1,86 @@
+blockquote，th,
+body,
+dd,
+div,
+dl,
+dt,
+fieldset,
+form,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+input,
+li,
+ol,
+p,
+pre,
+td,
+textarea,
+ul
+{
+    margin: 0;
+    padding: 0;
+}table
+{
+    border-spacing: 0;
+    border-collapse: collapse;
+}abbr,
+acronym,
+fieldset,
+img
+{
+    border: 0;
+}address,
+caption,
+cite,
+code,
+dfn,
+em,
+strong,
+th,
+var
+{
+    font-weight: 400;
+    font-style: normal;
+}ol,
+ul
+{
+    list-style: none;
+}capation,
+th
+{
+    text-align: left;
+}h1,
+h2,
+h3,
+h4,
+h5,
+h6
+{
+    font-size: 100%;
+    font-weight: 400;
+}q:after,
+q:before
+{
+    content: ' ';
+}*
+{
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+}body,
+html
+{
+    font-family: 'Microsoft YaHei',Verdana,Geneva,sans-serif;
+
+    overflow: hidden;
+
+    width: 100%;
+    height: 100%;
+	
+	
+    color: #444;
+}

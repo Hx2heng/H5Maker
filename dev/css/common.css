@@ -1,0 +1,170 @@
+
+#container
+{
+    position: relative;
+
+    width: 1220px;
+    margin: 0 auto;
+}
+
+/*page*/
+.page-top
+{
+    width: 100%;
+    margin-bottom: 10px;
+
+    border-bottom: 1px solid #eee;
+}
+.logo
+{
+    font-size: 3em;
+    font-weight: bold;
+
+    padding-left: 20px;
+
+    transition: all .5s ease;
+    text-align: left;
+
+    color: #21b888;
+    cursor: pointer;
+}
+.logo:hover{
+	padding-left: 40px;
+	color:#5EC7F5;
+}
+.logo:hover span.logo-s{
+	color:#7CD7FF;
+}
+
+.logo-s
+{
+    color: #42cea2;
+    transition: all .5s ease;
+}
+
+
+.menu
+{
+    width: 100%;
+    
+    border-top:1px solid #eee;
+}
+.menu-ul
+{
+    width: 100%;
+}
+.menu-li
+{
+    position: relative;
+
+    float: left;
+    overflow: hidden;
+
+    width: 100px;
+
+    transition: all .2s ease;
+    text-align: center;
+
+    background-color: #fff;
+}
+.menu-bg
+{
+    position: absolute;
+    z-index: 8;
+    top: -50%;
+    left: -50%;
+
+    width: 200%;
+    height: 200%;
+
+    transition: all 1s ease;
+    -webkit-transform: scale(0);
+            transform: scale(0);
+
+    opacity: .2;
+    border-radius: 100%;
+    background: white;
+}
+.menu-li a
+{
+    position: relative;
+    z-index: 9;
+
+    display: block;
+
+    padding: 10px ;
+
+    transition: all .5s ease;
+
+    color: #444;
+    box-shadow: 0 0 0 #21b888;
+}
+.menu-li:hover
+{
+    background-color: #21b888;
+}
+.menu-li:hover .menu-bg
+{
+    -webkit-transform: scale(1);
+            transform: scale(1);
+}
+.menu-li:hover a
+{
+    color: #fff;
+    box-shadow: 0 0 5px #025037,0 0 5px #025037,0 0 5px #025037,0 0 5px #025037,0 0 5px #025037;
+}
+.menu-li:hover a:active{
+	background-color: #A3FFE2;
+}
+
+
+/*main*/
+.page-main
+{
+    width: 1220px;
+    margin: 0 auto;
+}
+#left
+{
+    float: left;
+
+    width: 410px;
+    padding: 20px;
+
+    border-right: 1px solid #eee;
+}
+#center
+{
+    float: left;
+
+    width: 400px;
+}
+#right
+{
+    float: left;
+
+    width: 410px;
+    padding: 20px;
+
+    border-left: 1px solid #eee;
+}
+.phone
+{
+    width: 340px;
+    margin: 20px auto;
+    padding: 60px 10px;
+
+    border: 1px solid #999;
+    border-radius: 20px;
+}
+.phone-screen
+{
+    position: relative;
+
+    overflow: hidden;
+
+    width: 320px;
+    height: 480px;
+
+    border: 1px solid #999;
+}

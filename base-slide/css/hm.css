@@ -1,0 +1,52 @@
+.hm-hide{
+    display: none;
+}
+/*hm-container*/
+#hm-container
+{
+    width: 100%;
+    height: 100%;
+    
+    background-position: center;
+    background-size: cover;
+    position: absolute;
+}
+/*.hm-page*/
+.hm-page
+{
+    position: absolute;
+
+    width: 100%;
+    height: 100%;
+
+    animation-play-state: paused;
+
+    background-position: center;
+    background-size: cover;
+}
+.hm-page .hm-el
+{
+    animation-play-state: paused;
+    text-align: center;
+}
+.hm-page .hm-el p
+{ 
+    font-size: 2em;white-space:nowrap;
+}
+
+.hm-page .hm-el img
+{
+    display: block;
+}
+.hm-page.active {
+    display: block;
+}
+.hm-page.active .hm-el
+{
+    animation-play-state: running;
+}
+/*.hm-el*/
+.hm-el
+{
+    position: absolute;
+}

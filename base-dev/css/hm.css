@@ -33,10 +33,7 @@
 { 
     font-size: 2em;white-space:nowrap;
 }
-.hm-page .hm-el.selected
-{
-    box-shadow: 0 0 30px #00ffe5,0 0 5px #00ffe5,0 0 5px #00ffe5,0 0 5px #00ffe5,0 0 5px #00ffe5,0 0 5px #00ffe5;
-}
+
 .hm-page .hm-el img
 {
     display: block;
@@ -53,39 +50,3 @@
 {
     position: absolute;
 }
-
-/*page-list*/
-.page-list
-{
-    width: 100%;
-
-    max-height: 158px;
-    overflow-y: scroll;
-}
-.page-list .page-ul
-{
-    width: 100%;
-    margin: 0;
-    padding: 0;
-
-    list-style: none;
-}
-.page-list .page-ul .page-li
-{
-    line-height: 61px;
-    float: left;
-    width: 50px;
-    height: 71px;
-    margin: 4px;
-    cursor: pointer;
-    text-align: center;
-    color: #444;
-    border: 3px solid #00c0db;
-    border-radius: 5px;
-
-}
-.page-list .page-ul .page-li.active
-{
-    border-color: red;
-}
-.clear{clear: both}

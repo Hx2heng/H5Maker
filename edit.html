@@ -1,0 +1,447 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="Hx2">
+    <meta name="divat-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="Description" content="网页描述" />
+    <meta name="Keywords" content="关键字" />
+    <title>H5M_new</title>
+    <link rel="stylesheet" type="text/css" href="dev/css/base.css">
+    <link rel="stylesheet" type="text/css" href="dev/css/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="dev/css/hm.css">
+    <link rel="stylesheet" type="text/css" href="dev/css/common.css">
+    <script>
+    var GCFG = function() { //全局常量,获取方法 eg:GCFG('PATH');
+        var cfgObject = {
+            IMGPATH: '../images/' //资源文件路径
+        };
+        return function(type) {
+            if (!cfgObject[type]) throw new Error(type + ' is not be defind in GCFG.');
+            return cfgObject[type];
+        };
+    }();
+    </script>
+    <style>
+		/*hm*/
+		.hm-page .hm-el{cursor:move;}
+		.hm-el p{-webkit-user-select:none;-moz-user-select:none;-khtml-user-select:none;-ms-user-select:none;     -o-user-select:none;user-select:none;}
+    </style>
+</head>
+
+<body>
+    <!-- <div class="hm-el animated bounceIn" 		style="width:585px;height:874px;top:45px;left:27px;background:url(images/p1.png)"></div> -->
+    <div id="container">
+        <div class="page-top">
+            <div class="content">
+                <h1 class="logo">H5M<span class="logo-s">aker</span></h1>
+                <div class="menu">
+                    <div class="content">
+                        <ul class="menu-ul">
+                            <li class="menu-li"><span class="menu-bg"></span><a href="javascript:void(0)">首页</a></li>
+                            <li class="menu-li"><span class="menu-bg"></span><a href="javascript:void(0)">首页</a></li>
+                            <li class="menu-li"><span class="menu-bg"></span><a href="javascript:void(0)">首页</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+       
+
+        <div class="page-main page-main-edit" id = "main">
+            
+        </div>
+        
+
+        <div class="page-bottom">
+            <div class="content">
+                
+            </div>
+        </div>
+     </div>
+     <!-- tpl -->
+    <script type="text/html" id="home">
+        <div class="content">
+            there's home.
+        </div>
+    </script>
+    <script type="text/html" id="edit">
+        <div class="content">
+            <div id="left">
+        <div id="sys-ctrl">
+            <h1 class='title'>系统操作</h1>
+            <p>
+                <label>项目名</label>
+                <input type="text" id="pro-name" onkeyup="value=value.replace(/[\W]/g,'')" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))">
+                <button id="build">发布</button>
+                <button id="delete" class="btn-warning">删除</button>
+            </p>
+            <p>
+                <label>发布为： </label>
+                <label for="bulid-slide"> 滑动版</label>
+                <input id="bulid-slide" type="radio" name="type" value="slide" checked/>
+                <label for="bulid-dev"> 开发版</label>
+                <input id="bulid-dev" type="radio" name="type" value="dev" />
+            </p>
+            <p>
+                <label>设置全局背景</label>
+                <input type="file" id="addBg" accept="image" name="file">
+                <button id="delBg" class="btn-warning">删除背景</button>
+            </p>
+        </div>
+        <div id="page-ctrl">
+            <h1 class='title'>页操作</h1>
+            <p>
+                <button id="addPage">新建页</button>
+                <button id="preview">预览本页</button>
+                <button id="delPage" class="btn-warning">删除页</button>
+            </p>
+            <p>
+                <div class="page-list"></div>
+                <div class="clear"></div>
+            </p>
+            <p>
+                <label>设置当前背景</label>
+                <input type="file" id="addPageBg" accept="image" name="file">
+                <button id="delPageBg" class="btn-warning">删除背景</button>
+            </p>
+        </div>
+        <div id="el-ctrl">
+            <h1 class='title'>元素操作</h1>
+            <p>
+                <label>添加图片元素</label>
+                <input type="file" id="addEl" accept="image" name="file" multiple="multiple">
+            </p>
+            <p>
+                <label>添加文本元素</label>
+                <input type="text" id="el-text">
+                <button id="addElTxt">添加</button>
+            </p>
+            
+        </div>
+            </div>
+            <div id="center">
+        <div class="phone">
+            <div class="phone-screen">
+                <div id="hm-container">
+                    <div class="hm-wrap">
+                        <div class="hm-page">
+                            <div class="hm-content"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            </div>
+            <div id="right">
+        <div id="img-ctrl">
+            <h1 class='title'>元素设置</h1>
+            <p>
+                <button id="up">移上一层</button>
+                <button id="down">移下一层</button>
+                <button id="del-el" class="btn-warning">删除元素</button>
+            </p>
+            <p>
+                <label>图片缩放:</label>
+                <input type="range" name="" min="0.5" max="2" id="img-size" step=".01" value="1.0" />
+                <label class="img-size-dispaly" for="img-size">1倍</label>
+            </p>
+        </div>
+        <div id="txt-ctrl">
+            <h1 class='title'>文本设置</h1>
+            <p>
+                <label>颜色:</label>
+                <input type="color" id="font-color" />
+            </p>
+            <p>
+                <label>字体大小:</label>
+                <input type="range" name="points" min="1" max="10" id="font-size" step=".5" value="2" />
+                <label class="font-size-dispaly">2em</label>
+            </p>
+        </div>
+        <div id="anim-ctrl">
+            <h1 class='title'>动画设置</h1>
+            <p>
+                <label for="animations">添加动画</label>
+                <select id="animations" selected>
+                    <optgroup label="Attention Seekers">
+                        <option value="bounce">bounce</option>
+                        <option value="flash">flash</option>
+                        <option value="pulse">pulse</option>
+                        <option value="rubberBand">rubberBand</option>
+                        <option value="shake">shake</option>
+                        <option value="swing">swing</option>
+                        <option value="tada">tada</option>
+                        <option value="wobble">wobble</option>
+                    </optgroup>
+                    <optgroup label="Bouncing Entrances">
+                        <option value="bounceIn">bounceIn</option>
+                        <option value="bounceInDown">bounceInDown</option>
+                        <option value="bounceInLeft">bounceInLeft</option>
+                        <option value="bounceInRight">bounceInRight</option>
+                        <option value="bounceInUp">bounceInUp</option>
+                    </optgroup>
+                    <optgroup label="Bouncing Exits">
+                        <option value="bounceOut">bounceOut</option>
+                        <option value="bounceOutDown">bounceOutDown</option>
+                        <option value="bounceOutLeft">bounceOutLeft</option>
+                        <option value="bounceOutRight">bounceOutRight</option>
+                        <option value="bounceOutUp">bounceOutUp</option>
+                    </optgroup>
+                    <optgroup label="Fading Entrances">
+                        <option value="fadeIn">fadeIn</option>
+                        <option value="fadeInDown">fadeInDown</option>
+                        <option value="fadeInDownBig">fadeInDownBig</option>
+                        <option value="fadeInLeft">fadeInLeft</option>
+                        <option value="fadeInLeftBig">fadeInLeftBig</option>
+                        <option value="fadeInRight">fadeInRight</option>
+                        <option value="fadeInRightBig">fadeInRightBig</option>
+                        <option value="fadeInUp">fadeInUp</option>
+                        <option value="fadeInUpBig">fadeInUpBig</option>
+                    </optgroup>
+                    <optgroup label="Fading Exits">
+                        <option value="fadeOut">fadeOut</option>
+                        <option value="fadeOutDown">fadeOutDown</option>
+                        <option value="fadeOutDownBig">fadeOutDownBig</option>
+                        <option value="fadeOutLeft">fadeOutLeft</option>
+                        <option value="fadeOutLeftBig">fadeOutLeftBig</option>
+                        <option value="fadeOutRight">fadeOutRight</option>
+                        <option value="fadeOutRightBig">fadeOutRightBig</option>
+                        <option value="fadeOutUp">fadeOutUp</option>
+                        <option value="fadeOutUpBig">fadeOutUpBig</option>
+                    </optgroup>
+                    <optgroup label="Flippers">
+                        <option value="flip">flip</option>
+                        <option value="flipInX">flipInX</option>
+                        <option value="flipInY">flipInY</option>
+                        <option value="flipOutX">flipOutX</option>
+                        <option value="flipOutY">flipOutY</option>
+                    </optgroup>
+                    <optgroup label="Lightspeed">
+                        <option value="lightSpeedIn">lightSpeedIn</option>
+                        <option value="lightSpeedOut">lightSpeedOut</option>
+                    </optgroup>
+                    <optgroup label="Rotating Entrances">
+                        <option value="rotateIn">rotateIn</option>
+                        <option value="rotateInDownLeft">rotateInDownLeft</option>
+                        <option value="rotateInDownRight">rotateInDownRight</option>
+                        <option value="rotateInUpLeft">rotateInUpLeft</option>
+                        <option value="rotateInUpRight">rotateInUpRight</option>
+                    </optgroup>
+                    <optgroup label="Rotating Exits">
+                        <option value="rotateOut">rotateOut</option>
+                        <option value="rotateOutDownLeft">rotateOutDownLeft</option>
+                        <option value="rotateOutDownRight">rotateOutDownRight</option>
+                        <option value="rotateOutUpLeft">rotateOutUpLeft</option>
+                        <option value="rotateOutUpRight">rotateOutUpRight</option>
+                    </optgroup>
+                    <optgroup label="Specials">
+                        <option value="hinge">hinge</option>
+                        <option value="rollIn">rollIn</option>
+                        <option value="rollOut">rollOut</option>
+                    </optgroup>
+                    <optgroup label="Zoom Entrances">
+                        <option value="zoomIn">zoomIn</option>
+                        <option value="zoomInDown">zoomInDown</option>
+                        <option value="zoomInLeft">zoomInLeft</option>
+                        <option value="zoomInRight">zoomInRight</option>
+                        <option value="zoomInUp">zoomInUp</option>
+                    </optgroup>
+                    <optgroup label="Zoom Exits">
+                        <option value="zoomOut">zoomOut</option>
+                        <option value="zoomOutDown">zoomOutDown</option>
+                        <option value="zoomOutLeft">zoomOutLeft</option>
+                        <option value="zoomOutRight">zoomOutRight</option>
+                        <option value="zoomOutUp">zoomOutUp</option>
+                    </optgroup>
+                </select>
+            </p>
+            <p>
+                <label>动画时长(s)</label>
+                <input type="number" id="anim-duration">
+            </p>
+            <p>
+                <label for="anim-delay">动画延时(s)</label>
+                <input type="number" id="anim-delay">
+            </p>
+            <p>
+                <label for="anim-count">动画次数(num/infinite)</label>
+                <input type="text" id="anim-count" value="1">
+            </p>
+            <p>
+                <button id="set-anim">设置动画</button>
+                <button id="del-anim" class="btn-warning">删除动画</button>
+            </p>
+        </div>
+            </div>
+        </div>
+    </script>
+     <!-- tpl -->
+    <!-- body内容 -->
+    <script src="dev/js/motion.js"></script>
+    <script src="dev/js/router.js"></script>
+    <script src="dev/js/onePage.js"></script>
+    <script src="dev/js/hm.js"></script>
+    <script src="dev/js/common.js"></script>
+    <script>
+    // 页面初始代码内容
+    $(window).ready(function() {
+        var h5m = new hm();
+        //初始化
+        $('#txt-ctrl').find('input,input,button').attr('disabled','');
+        $('#anim-ctrl').find('select,input,button').attr('disabled','');
+        $('#img-ctrl').find('select,input,button').attr('disabled','');
+        // 事件设置
+        h5m.on('selectEl',function(el){
+        	$('#txt-ctrl').find('input,input,button').removeAttr('disabled');
+            $('#anim-ctrl').find('select,input,button').removeAttr('disabled');
+        	$('#img-ctrl').find('select,input,button').removeAttr('disabled');
+        });
+        h5m.on('unSelectEl',function(){
+        	$('#txt-ctrl').find('input,input,button').attr('disabled','');
+            $('#anim-ctrl').find('select,input,button').attr('disabled','');
+        	$('#img-ctrl').find('select,input,button').attr('disabled','');
+        });
+
+        //系统操作
+        $('#build').on('click', function() {
+            if ($('#pro-name').val() == '') {
+                alert('输入项目名');
+                return;
+            }
+            var type = 1;
+            if($('#bulid-slide').attr('checked')){
+            	type = 1;
+            }else{
+            	type = 2;
+            }
+
+            h5m.build(function(imgItems,html){
+            	var name = $('#pro-name').val();
+            	var data = {
+            		type:type,
+            		name:name,
+            		html:html,
+            		imgList:imgItems
+            	}
+            	console.log(JSON.stringify(data));
+            	$.ajax({
+            		url:'pro.php',
+            		type:'post',
+            		dataType: "json",
+            		data:{data: JSON.stringify(data)},
+            		success:function(res){
+            			//alert(res);
+            			window.open("build/"+name)
+            			console.log(res.val);
+
+            		},
+            		error:function(){
+                                    console.log("失败");
+            		}
+            	});
+            });//删除当前选中元素
+        })
+        $('#addBg').on('change', function() {
+                h5m.addBg(this.files);
+        })
+        $('#delBg').on('click', function() {
+                h5m.delBg();
+         })
+            //页操作
+        $('#addPage').on('click', function() {
+            h5m.addPage();
+        })
+        $('#delPage').on('click', function() {
+            h5m.delPage();
+        })
+        $('#preview').on('click', function() {
+            h5m.preview();
+        })
+        $('#addPageBg').on('change', function() {
+            h5m.addPageBg(this.files);
+        })
+        $('#delPageBg').on('click', function() {
+                h5m.delPageBg();
+            })
+            //元素操作
+        $('#addEl').on('change', function() {
+            h5m.addImgEl(this.files);
+        })
+        $('#addElTxt').on('click', function() {
+            var txt = $('#el-text').val();
+            h5m.addTxtEl(txt);
+        });
+        $('#up').on('click', function() {
+            h5m.indexSet('up');
+        })
+        $('#down').on('click', function() {
+            h5m.indexSet('down');
+        })
+        $('#del-el').on('click', function() {
+                h5m.delEl('one'); //删除当前选中元素
+            })
+        var selectEl;
+        //元素设置
+        $('#img-size').on('mousemove', function() {
+            $('.img-size-dispaly').html($(this).val() + '倍');
+            if (selectEl) {
+                h5m.setImgSize($(this).val());
+            }
+
+        })
+        //文本设置
+        
+        h5m.on("selectEl", function(el) {
+            selectEl = el;
+            if (el.find('p').html()) {
+                var fontSize = parseFloat(el.find('p').css('font-size'));
+                $('#font-size').val(fontSize);
+                $('.font-size-dispaly').html(fontSize + 'em');
+            }
+            if (el.attr('img-scale')) {
+                var imgScale = parseFloat(el.attr('img-scale'));
+                $('#img-size').val(imgScale);
+                $('.img-size-dispaly').html(imgScale + '倍');
+            }
+        });
+        $('#font-size').on('mousemove', function() {
+            $('.font-size-dispaly').html($(this).val() + 'em');
+            if (selectEl) {
+                h5m.setFontSize($(this).val());
+            }
+
+        })
+        $('#font-color').on('change', function() {
+            h5m.setFontColor($(this).val());
+        })
+
+        //动画设置
+        $('#animations').on('click', function(e) {
+            e.preventDefault();
+            var anim = $('#animations').val();
+            h5m.addAnimate(anim);
+        })
+        $('#del-anim').on('click', function() {
+            h5m.delAnimate('one'); //删除当前选中元素的动画
+        })
+        $('#set-anim').on('click', function() {
+            var duration = $("#anim-duration").val();
+            var delay = $("#anim-delay").val();
+            var count = $("#anim-count").val();
+            h5m.setAnimate({
+                duration: duration,
+                delay: delay,
+                count: count
+            }); //删除当前元素的动画
+        })
+
+    })
+    </script>
+</body>
+
+</html>

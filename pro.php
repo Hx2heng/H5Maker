@@ -9,7 +9,11 @@
 	//$data->imgList->src 
 	$proName = $data->name;
 	$buildPath = 'build/';
-	$basePath = 'base/';
+	if($data->type == 1){
+		$basePath = 'base-slide/';
+	}else{
+		$basePath = 'base-dev/';
+	}
 
 	//判断是否存在项目
 	if (!file_exists($buildPath.$proName)){ 
@@ -21,12 +25,17 @@
 		//文件夹搬移
 		recurse_copy($basePath.'js',$buildPath.$proName.'/js');
 		recurse_copy($basePath.'css',$buildPath.$proName.'/css');
+		recurse_copy($basePath.'images',$buildPath.$proName.'/images');
 		//修改index.html
 		copy($basePath."index.html",$buildPath.$proName.'/index.html');//复制index
 		//替换 插入html
 		$str=file_get_contents($buildPath.$proName.'/index.html');//获取baseHtml 内容
 		$html=str_replace('{{$html}}',$data->html,$str);
 		file_put_contents($buildPath.$proName.'/index.html',$html);
+		$str=file_get_contents($buildPath.$proName.'/index.html');//获取baseHtml 内容
+		$html=str_replace('{{$title}}',$data->name,$str);
+		file_put_contents($buildPath.$proName.'/index.html',$html);
+		
 		//替换 插入imgPath
 		$imgPath = '';
 		for ($x=0; $x<count($data->imgList); $x++) {
