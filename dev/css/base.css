@@ -25,6 +25,9 @@ h1.title{font-weight:bold;background:#eee;padding:10px;text-align:center;}
 input[type=range]{padding:0;height:10px;    width: 160px;}
 input[type=color]{padding:0;}
 input[type=file]{width:89px;}
+input[disabled]{cursor:not-allowed;}
+select[disabled]{cursor:not-allowed;}
+button[disabled]{cursor:not-allowed;}
 .btn-warning{background-color:#FF5A5A}
 
 .content{width: 100%;}
