@@ -32,20 +32,58 @@
 }
 .hm-page .hm-el
 {
+    cursor:pointer;
     animation-play-state: paused;
     text-align: center;
 }
+
 .hm-page .hm-el p
 { 
-    font-size: 2em;white-space:nowrap;
+    font-size: 3em;white-space:nowrap;margin: 0;
+}
+.hm-page .hm-el p,img
+{
+    -webkit-user-select:none;-moz-user-select:none;-khtml-user-select:none;-ms-user-select:none;     -o-user-select:none;user-select:none;
+
 }
 .hm-page .hm-el.selected
 {
-    box-shadow: 0 0 30px #00ffe5,0 0 5px #00ffe5,0 0 5px #00ffe5,0 0 5px #00ffe5,0 0 5px #00ffe5,0 0 5px #00ffe5;
+}
+.hm-page .hm-el.selected:after
+{
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border: 5px dotted #00ffe5;
+    margin: -5px;
+    background-color: rgba(94, 199, 245, 0.2);
+    animation: flash 2s ease infinite;
+    cursor: move;
+    /*transform: scale(1.02);*/
 }
 .hm-page .hm-el img
 {
     display: block;
+}
+.hm-page .hm-el .hm-input
+{
+    padding: 10px;
+    font-size: 2em;
+    border:none;
+    border-radius: 8px;
+}
+.hm-page .hm-el .hm-btn
+{
+       max-width: 640px;
+    display: block;
+    padding: 20px;
+    background-color: #5EC7F5;
+    border-radius: 10px;
+    font-size: 2em;
+    color: white;
 }
 .hm-page.active .hm-el
 {
@@ -82,13 +120,43 @@
     margin: 4px;
     cursor: pointer;
     text-align: center;
-    color: #444;
     border: 3px solid #00c0db;
     border-radius: 5px;
-
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color:white;
+    font-size:1.5em;
+    text-shadow: 0 0 2px #00C0DB,0 0 1px #00C0DB,0 0 1px #00C0DB,0 0 1px #00C0DB,0 0 1px #00C0DB,0 0 1px #00C0DB,0 0 1px #00C0DB;
+    transition: all 0.5s ease;
 }
 .page-list .page-ul .page-li.active
 {
     border-color: red;
+   text-shadow: 0 0 1px red,0 0 1px red,0 0 1px red,0 0 1px red,0 0 1px red,0 0 1px red,0 0 1px red;
+    animation: bounceIn 0.5s ease
+}
+.page-list .page-ul .page-li:hover
+{
+    transform: scale(1.1);
 }
 .clear{clear: both}
+
+/*audio*/
+.hm-audio {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    z-index: 200;
+    width: 30px;
+    height: 30px;
+    background-image: url(../images/normalmusic.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+.rotate {
+    -webkit-animation: rota 1.2s linear infinite;
+    -moz-animation: rota 1.2s linear infinite;
+    -o-animation: rota 1.2s linear infinite;
+    animation: rota 1.2s linear infinite
+}

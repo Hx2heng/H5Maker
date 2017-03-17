@@ -6,7 +6,7 @@
  * qq:397323988
  * 使用方法：$('#div').onePage(); 效果：在有宽高的父级容器中水平垂直居中并且把内容全部展示。
  */
-(function($){
+(function(){
     $.extend($.fn, {
         onePage: function(position) {
             var methons = {
@@ -72,4 +72,4 @@
             })
         }
     });
-})(Zepto)
+})()

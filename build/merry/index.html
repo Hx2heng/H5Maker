@@ -1,0 +1,252 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8">
+<meta name="author" content="Hx2">
+<meta name="format-detection" content="telephone=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="Description" content="网页描述"/>
+<meta name="Keywords" content="关键字"/>
+<title>merry</title>
+<link rel="stylesheet" type="text/css" href="css/base.css">
+<link rel="stylesheet" type="text/css" href="css/animate.min.css">
+<link rel="stylesheet" type="text/css" href="css/hm.css">
+<style>
+	#container{width:100%;height:100%;overflow: hidden;position: relative;max-width: 800px;
+	margin:0 auto;}
+	/*loader*/
+	#loader{position:absolute;z-index:9999;top:0;left:0;width:100%;height:100%;text-align:center;color:#00577E;background:#DBF2FF}
+	#loader .loader-wrap{position:absolute;top:30%;width:100%}
+	#loader .loader-wrap .progress-bar{position:relative;width:60%;height:5px;margin:10px auto;border-radius:2px;background:#004367;overflow: hidden;}
+	#loader .loader-wrap .progress-bar .loading-ele{position:absolute;top:-48px;left:0;transition:left .5s ease;}
+	#loader .loader-wrap .progress-bar .progress-green{position:absolute;top:0;left:0;width:0;height:100%;transition:width .5s ease;border-radius:2px;background:#0B96E3}
+	#loader .loader-wrap .progress-bar .progress-green-light{position:absolute;top:0;left:0;width:0;height:100%;transition:width .5s ease;border-radius:2px;background:#8B00BC;border-bottom-left-radius: 100%;border-top-left-radius: 100%;box-shadow:0 0 10px #8C9EFE;}
+	.mask{position: absolute;left: 0;top:0;width: 100%;height: 100%;background-color:rgba(0,0,0,0.7);}
+	.hm-el-class-0{background-image:url("images/pBg_0.jpeg")}.hm-el-class-2{top: 340.167px; left: 2.11658px;}.hm-el-class-3{max-width: 640px;}.hm-el-class-4{top: 141.558px; left: 114.086px;}.hm-el-class-5{max-width: 640px;}.hm-el-class-6{display: none;}.hm-el-class-8{top: 156.34px; left: 2.11297px;}.hm-el-class-9{max-width: 640px;}.hm-el-class-10{top: -6.3532px; left: 82.3906px;}.hm-el-class-11{max-width: 640px;}.hm-el-class-12{top: 881.093px; left: 35.9133px;}.hm-el-class-13{max-width: 640px;}.hm-el-class-14{top: 878.984px; left: 352.858px;}.hm-el-class-15{max-width: 640px;}.hm-el-class-16{display: none;}.hm-el-class-18{top: 46.4589px; left: 38.006px;}.hm-el-class-19{max-width: 640px;}.hm-el-class-20{top: 342.297px; left: 0px;}.hm-el-class-21{max-width: 640px;}.hm-el-class-22{top: 878.996px; left: -12.6778px;}.hm-el-class-23{max-width: 640px;}.hm-el-class-24{top: 878.996px; left: 217.636px;}.hm-el-class-25{max-width: 640px;}.hm-el-class-26{top: 876.883px; left: 424.707px;}.hm-el-class-27{max-width: 640px;}.hm-el-class-28{display: none;}.hm-el-class-30{top: 0px; left: -19.0179px;}.hm-el-class-31{max-width: 640px;}.hm-el-class-32{top: 253.556px; left: 175.377px;}.hm-el-class-33{max-width: 640px;}.hm-el-class-34{top: 625.422px; left: 156.332px;}.hm-el-class-35{max-width: 640px;}.hm-el-class-36{top: 883.211px; left: 180.646px;}.hm-el-class-37{max-width: 640px;}.hm-el-class-38{top: 660px; left: 163px;}.hm-el-class-39{width: 136px;}.hm-el-class-40{top: 668px; left: 266.227px;}.hm-el-class-41{max-width: 640px;}.hm-el-class-42{top: 701.506px; left: 266.234px;}.hm-el-class-43{max-width: 640px;}.hm-el-class-44{top: 736px; left: 266px;}.hm-el-class-45{max-width: 640px;}.hm-el-class-46{top: 883px; left: -12px;}.hm-el-class-47{max-width: 640px;}.hm-el-class-48{top: 883px; left: 439px;}.hm-el-class-49{max-width: 640px;}.hm-el-class-50{display: none;}.hm-el-class-52{top: 21.1297px; left: 0px;}.hm-el-class-53{max-width: 640px;}.hm-el-class-54{top: 680.352px; left: 69px;}.hm-el-class-55{max-width: 640px;}.hm-el-class-56{top: 680px; left: 199px;}.hm-el-class-57{max-width: 640px;}.hm-el-class-58{top: 679px; left: 328px;}.hm-el-class-59{max-width: 640px;}.hm-el-class-60{top: 678px; left: 457px;}.hm-el-class-61{max-width: 640px;}.hm-el-class-62{top: 821.946px; left: 48.5983px;}.hm-el-class-63{max-width: 640px;}.hm-el-class-64{top: 838px; left: 199px;}.hm-el-class-65{max-width: 640px;}.hm-el-class-66{top: 821px; left: 310px;}.hm-el-class-67{max-width: 640px;}.hm-el-class-68{top: 835px; left: 460px;}.hm-el-class-69{max-width: 640px;}.hm-el-class-70{display: none;}.hm-el-class-72{top: 29.5686px; left: 3.17423px;}.hm-el-class-73{max-width: 640px;}.hm-el-class-74{top: 8.4375px; left: -36.9722px;}.hm-el-class-75{font-size: 2em; max-width: 640px;}.hm-el-class-76{top: 327.496px; left: 202.836px;}.hm-el-class-77{font-size: 2em; max-width: 640px;}.hm-el-class-78{top: 431.007px; left: 198.603px;}.hm-el-class-79{font-size: 2em; max-width: 640px;}.hm-el-class-80{top: 528.234px; left: 202.845px;}.hm-el-class-81{font-size: 2em; max-width: 640px;}.hm-el-class-82{top: 874.77px; left: 180.659px;}.hm-el-class-83{max-width: 640px;}.hm-el-class-84{display: block;}.hm-el-class-86{top: 29.5816px; left: 32.751px;}.hm-el-class-87{max-width: 640px;}.hm-el-class-88{top: 870.544px; left: 186.998px;}.hm-el-class-89{max-width: 640px;}
+</style>
+<script>
+	var GCFG = function(){//全局常量,获取方法 eg:GCFG('PATH');
+		var cfgObject={
+			IMGPATH:'../images/'//资源文件路径
+		};
+		return function(type){
+			if(!cfgObject[type]) throw new Error(type+' is not be defind in GCFG.');
+			return cfgObject[type];
+		};
+	}();
+</script>
+</head>
+
+<body>
+<!-- loader -->
+<div id="loader">
+	<div class="loader-wrap">
+		<div class="progress-bar">
+			<img class="loading-ele">
+			<div class="progress-green-light"></div>
+			<div class="progress-green"></div>
+		</div>
+		<p>加载中</p>
+		<p><span class="span" id="loading-txt">0</span></p>
+	</div>
+</div>
+<div id="container">
+	<div id="hm-container" style="background-image:url(&quot;images/bg.jpeg&quot;)">
+		<div class="hm-wrap">
+			<div class="hm-page hm-el-class-0">
+				<div class="hm-content">
+					<div class="hm-el animated bounceIn hm-el-class-2">
+						<img src="images/0.png" class="hm-el-class-3">
+					</div>
+					<div class="hm-el animated bounceInDown hm-el-class-4">
+						<img src="images/1.png" class="hm-el-class-5">
+					</div>
+				</div>
+			</div>
+			<div class="hm-page hm-el-class-6">
+				<div class="hm-content">
+					<div class="hm-el animated fadeInUp hm-el-class-8">
+						<img src="images/2.png" class="hm-el-class-9">
+					</div>
+					<div class="hm-el animated rotateInDownLeft hm-el-class-10">
+						<img src="images/3.png" class="hm-el-class-11">
+					</div>
+					<div class="hm-el animated bounceIn hm-el-class-12">
+						<img src="images/4.png" class="hm-el-class-13">
+					</div>
+					<div class="hm-el animated bounceIn hm-el-class-14">
+						<img src="images/5.png" class="hm-el-class-15">
+					</div>
+				</div>
+			</div>
+			<div class="hm-page hm-el-class-16">
+				<div class="hm-content">
+					<div class="hm-el animated bounceIn hm-el-class-18">
+						<img src="images/6.png" class="hm-el-class-19">
+					</div>
+					<div class="hm-el animated bounceInDown hm-el-class-20">
+						<img src="images/7.png" class="hm-el-class-21">
+					</div>
+					<div class="hm-el animated bounceIn hm-el-class-22">
+						<img src="images/8.png" class="hm-el-class-23">
+					</div>
+					<div class="hm-el animated bounceIn hm-el-class-24">
+						<img src="images/9.png" class="hm-el-class-25">
+					</div>
+					<div class="hm-el animated bounceIn hm-el-class-26">
+						<img src="images/10.png" class="hm-el-class-27">
+					</div>
+				</div>
+			</div>
+			<div class="hm-page hm-el-class-28">
+				<div class="hm-content">
+					<div class="hm-el animated fadeInDown hm-el-class-30">
+						<img src="images/11.png" class="hm-el-class-31">
+					</div>
+					<div class="hm-el animated bounceIn hm-el-class-32">
+						<img src="images/12.png" class="hm-el-class-33">
+					</div>
+					<div class="hm-el animated bounceIn hm-el-class-34">
+						<img src="images/13.png" class="hm-el-class-35">
+					</div>
+					<div class="hm-el animated bounceIn hm-el-class-36">
+						<img src="images/14.png" class="hm-el-class-37">
+					</div>
+					<div class="hm-el hm-el-class-38" img-scale="1">
+						<img src="images/15.png" class="hm-el-class-39">
+					</div>
+					<div class="hm-el hm-el-class-40">
+						<img src="images/16.png" class="hm-el-class-41">
+					</div>
+					<div class="hm-el hm-el-class-42">
+						<img src="images/17.png" class="hm-el-class-43">
+					</div>
+					<div class="hm-el hm-el-class-44">
+						<img src="images/18.png" class="hm-el-class-45">
+					</div>
+					<div class="hm-el animated bounceIn hm-el-class-46">
+						<img src="images/19.png" class="hm-el-class-47">
+					</div>
+					<div class="hm-el animated bounceIn hm-el-class-48">
+						<img src="images/20.png" class="hm-el-class-49">
+					</div>
+				</div>
+			</div>
+			<div class="hm-page hm-el-class-50">
+				<div class="hm-content">
+					<div class="hm-el hm-el-class-52">
+						<img src="images/21.png" class="hm-el-class-53">
+					</div>
+					<div class="hm-el animated bounceIn hm-el-class-54">
+						<img src="images/22.png" class="hm-el-class-55">
+					</div>
+					<div class="hm-el animated bounceIn hm-el-class-56">
+						<img src="images/23.png" class="hm-el-class-57">
+					</div>
+					<div class="hm-el animated bounceIn hm-el-class-58">
+						<img src="images/24.png" class="hm-el-class-59">
+					</div>
+					<div class="hm-el animated bounceIn hm-el-class-60">
+						<img src="images/25.png" class="hm-el-class-61">
+					</div>
+					<div class="hm-el animated bounceIn hm-el-class-62">
+						<img src="images/26.png" class="hm-el-class-63">
+					</div>
+					<div class="hm-el animated bounceIn hm-el-class-64">
+						<img src="images/27.png" class="hm-el-class-65">
+					</div>
+					<div class="hm-el animated bounceIn hm-el-class-66">
+						<img src="images/28.png" class="hm-el-class-67">
+					</div>
+					<div class="hm-el animated bounceIn hm-el-class-68">
+						<img src="images/29.png" class="hm-el-class-69">
+					</div>
+				</div>
+			</div>
+			<div class="hm-page hm-el-class-70">
+				<div class="hm-content">
+					<div class="hm-el animated bounceInDown hm-el-class-72">
+						<img src="images/30.png" class="hm-el-class-73">
+					</div>
+					<div class="hm-el hm-el-class-74">
+						<p class="hm-el-class-75">1</p>
+					</div>
+					<div class="hm-el animated bounceInDown hm-el-class-76">
+						<p class="hm-el-class-77">1fgdfgdfgd</p>
+					</div>
+					<div class="hm-el animated bounceInDown hm-el-class-78">
+						<p class="hm-el-class-79">1fgdfgdfgd</p>
+					</div>
+					<div class="hm-el animated bounceInDown hm-el-class-80">
+						<p class="hm-el-class-81">1fgdfgdfgd</p>
+					</div>
+					<div class="hm-el animated bounceIn hm-el-class-82">
+						<img src="images/31.png" class="hm-el-class-83">
+					</div>
+				</div>
+			</div>
+			<div class="hm-page hm-el-class-84">
+				<div class="hm-content">
+					<div class="hm-el animated bounceInDown hm-el-class-86">
+						<img src="images/32.png" class="hm-el-class-87">
+					</div>
+					<div class="hm-el animated bounceIn hm-el-class-88">
+						<img src="images/33.png" class="hm-el-class-89">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- <div class="share">
+	<img src="images/share.png" alt="" class="man">
+	<p>点击右上角按钮</p>
+	<p>分享给好友</p>
+</div> -->
+<script src="js/lazyBones.min.js"></script>
+<script src="js/common.js"></script>
+<script>
+//init
+new lb.Rotate();
+$('.hm-content').onePage();
+$('.hm-page').addClass('hm-hide');
+var getSource = function() {
+	var sourceArr = [
+		"images/bg.jpeg","images/pBg_0.jpeg","images/0.png","images/1.png","images/2.png","images/3.png","images/4.png","images/5.png","images/6.png","images/7.png","images/8.png","images/9.png","images/10.png","images/11.png","images/12.png","images/13.png","images/14.png","images/15.png","images/16.png","images/17.png","images/18.png","images/19.png","images/20.png","images/21.png","images/22.png","images/23.png","images/24.png","images/25.png","images/26.png","images/27.png","images/28.png","images/29.png","images/30.png","images/31.png","images/32.png","images/33.png"
+	];
+	return sourceArr;
+	}
+	new lb.Loader(getSource(), {
+	onLoading: function(cur, total) {
+		$('#loading-txt').html(parseInt(cur / total * 100) + '%');
+		$('.progress-green').css({
+			'width': parseInt(cur / total * 100) + '%'
+		});
+		$('.progress-green-light').css({
+			'width': parseInt(cur / total * 100) + '%',
+			'box-shadow':'0 0 '+parseInt(cur / total * 100)/10 + 'px' +' rgb(0, 211, 255)'
+		});
+		var progressWidth = $('.progress-bar').width() - 30;
+		$('.loading-ele').css({
+			'left': parseInt(cur / total * 100) / 100 * progressWidth + 'px'
+		});
+	},
+	onComplete: function() {
+		setTimeout(function() {
+			$("#loader").fadeOut(500);
+			$('.hm-page').eq(0).addClass('active');
+		}, 500);
+	},
+	loadType: 1,
+	minTime: 50
+});
+	$(window).ready(function(){
+		
+		
+	})
+</script>
+</body>
+</html>
+	

@@ -9,7 +9,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="Description" content="网页描述" />
     <meta name="Keywords" content="关键字" />
-    <title>H5M_new</title>
+    <title>H5Maker</title>
     <link rel="stylesheet" type="text/css" href="dev/css/base.css">
     <link rel="stylesheet" type="text/css" href="dev/css/animate.min.css">
     <link rel="stylesheet" type="text/css" href="dev/css/hm.css">
@@ -26,9 +26,7 @@
     }();
     </script>
     <style>
-        /*hm*/
-        .hm-page .hm-el{cursor:move;}
-        .hm-el p{-webkit-user-select:none;-moz-user-select:none;-khtml-user-select:none;-ms-user-select:none;     -o-user-select:none;user-select:none;}
+        
     </style>
 </head>
 
@@ -37,7 +35,7 @@
     <div id="container">
         <div class="page-top">
             <div class="content">
-                <h1 class="logo">H5M<span class="logo-s">aker</span></h1>
+                <h1 class="logo">H5M<span class="logo-s">aker </span><span style="font-size: 0.5em;font-weight: normal;color:#777">- html5在线生成系统</span></h1>
                 <div class="menu">
                     <div class="content">
                         <ul class="menu-ul">
@@ -57,53 +55,68 @@
                 <div id="left">
             <div id="sys-ctrl">
                 <h1 class='title'>系统操作</h1>
-                <p>
+                <div class="ctrl-group">
                     <label>项目名</label>
                     <input type="text" id="pro-name" onkeyup="value=value.replace(/[\W]/g,'')" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))">
                     <button id="build">发布</button>
                     <button id="delete" class="btn-warning">删除</button>
-                </p>
-                <p>
+                </div>
+                <div class="ctrl-group">
                     <label>发布为： </label>
                     <label for="bulid-slide"> 滑动版</label>
                     <input id="bulid-slide" type="radio" name="type" value="slide" checked/>
                     <label for="bulid-dev"> 开发版</label>
                     <input id="bulid-dev" type="radio" name="type" value="dev" />
-                </p>
-                <p>
-                    <label>设置全局背景</label>
-                    <input type="file" id="addBg" accept="image" name="file">
+                </div>
+                <div class="ctrl-group">
+                     <label>发布选项： </label>
+                     <label for="bulid-isPreview"> 发布后预览</label>
+                     <input id="bulid-isPreview" type="checkbox" name="isPreview" value="slide"/>
+                     <label for="bulid-isDownload"> 发布后下载</label>
+                     <input id="bulid-isDownload" type="checkbox" name="isDownload" value="dev" />
+                </div>
+                <div class="ctrl-group">
+                    <label for="addBg" class="btn">设置全局背景</label>
+                    <input type="file" id="addBg" accept="image/*" name="file">
                     <button id="delBg" class="btn-warning">删除背景</button>
-                </p>
+                    <label for="addMusic" class="btn">添加背景音乐</label>
+                    <input type="file" id="addMusic" accept="audio/*" >
+                    <button id="delBgMusic" class="btn-warning">删除音乐</button>
+                </div>
             </div>
             <div id="page-ctrl">
                 <h1 class='title'>页操作</h1>
-                <p>
+                <div class="ctrl-group">
                     <button id="addPage">新建页</button>
                     <button id="preview">预览本页</button>
+                    <label for="addPageBg" class="btn">设置背景</label>
+                    <input type="file" id="addPageBg" accept="image/*" name="file">
+                    <button id="delPageBg" class="btn-warning">删除背景</button>
                     <button id="delPage" class="btn-warning">删除页</button>
-                </p>
-                <p>
+                </div>
+                <div class="ctrl-group">
                     <div class="page-list"></div>
                     <div class="clear"></div>
-                </p>
-                <p>
-                    <label>设置当前背景</label>
-                    <input type="file" id="addPageBg" accept="image" name="file">
-                    <button id="delPageBg" class="btn-warning">删除背景</button>
-                </p>
+                </div>
+                <div class="ctrl-group">
+                </div>
+                
             </div>
             <div id="el-ctrl">
                 <h1 class='title'>元素操作</h1>
-                <p>
-                    <label>添加图片元素</label>
-                    <input type="file" id="addEl" accept="image" name="file" multiple="multiple">
-                </p>
-                <p>
+                <div class="ctrl-group">
+                    <label for="addEl" class="btn">添加图片元素</label>
+                    <input type="file" id="addEl" accept="image/*" name="file" multiple="multiple">
+                    <button id="addElInput">添加输入框</button>
+                    <button id="addElBtn">添加按钮</button>
+                </div>
+                
+                <div class="ctrl-group">
                     <label>添加文本元素</label>
                     <input type="text" id="el-text">
                     <button id="addElTxt">添加</button>
-                </p>
+                </div>
+                
                 
             </div>
                 </div>
@@ -123,33 +136,42 @@
                 <div id="right">
             <div id="img-ctrl">
                 <h1 class='title'>元素设置</h1>
-                <p>
+                <div class="ctrl-group">
                     <button id="up">移上一层</button>
                     <button id="down">移下一层</button>
+                    <button id="delStyle" class="btn-warning">格式化样式</button>
                     <button id="del-el" class="btn-warning">删除元素</button>
-                </p>
-                <p>
+                </div>
+                <div class="ctrl-group">
                     <label>图片缩放:</label>
-                    <input type="range" name="" min="0.5" max="2" id="img-size" step=".01" value="1.0" />
+                    <input type="range" name="" min="0.1" max="9.9" id="img-size" step=".01" value="1.0" />
                     <label class="img-size-dispaly" for="img-size">1倍</label>
-                </p>
-            </div>
-            <div id="txt-ctrl">
-                <h1 class='title'>文本设置</h1>
-                <p>
-                    <label>颜色:</label>
-                    <input type="color" id="font-color" />
-                </p>
-                <p>
+                </div>
+                
+                <div class="ctrl-group">
                     <label>字体大小:</label>
                     <input type="range" name="points" min="1" max="10" id="font-size" step=".5" value="2" />
                     <label class="font-size-dispaly">2em</label>
-                </p>
+                </div>
+                
+
+                <div class="ctrl-group">
+                    <label>文字颜色:</label>
+                    <input type="color" id="font-color" />
+
+                </div>
+
+                
             </div>
+           
+               
+                
+           
             <div id="anim-ctrl">
                 <h1 class='title'>动画设置</h1>
-                <p>
+                <div class="ctrl-group">
                     <label for="animations">添加动画</label>
+
                     <select id="animations" selected>
                         <optgroup label="Attention Seekers">
                             <option value="bounce">bounce</option>
@@ -242,23 +264,29 @@
                             <option value="zoomOutUp">zoomOutUp</option>
                         </optgroup>
                     </select>
-                </p>
-                <p>
+                     <button id="del-anim" class="btn-warning">删除动画</button>
+                </div>
+                <div class="ctrl-group">
                     <label>动画时长(s)</label>
                     <input type="number" id="anim-duration">
-                </p>
-                <p>
+                </div>
+                <div class="ctrl-group">
                     <label for="anim-delay">动画延时(s)</label>
                     <input type="number" id="anim-delay">
-                </p>
-                <p>
+                </div>
+                <div class="ctrl-group">
                     <label for="anim-count">动画次数(num/infinite)</label>
                     <input type="text" id="anim-count" value="1">
-                </p>
-                <p>
+                </div>
+                <div class="ctrl-group">
                     <button id="set-anim">设置动画</button>
-                    <button id="del-anim" class="btn-warning">删除动画</button>
-                </p>
+                   
+                </div>
+                <div class="ctrl-group">
+                    <textarea name="" id="extraStyle" cols="30" rows="3"></textarea>
+                    <button id="addStyle">添加额外css样式</button>
+                    
+                </div>
             </div>
                 </div>
             </div>
@@ -281,13 +309,15 @@
     </script>
      <!-- tpl -->
     <!-- body内容 -->
-    <script src="dev/js/motion.js"></script>
+    <script src="dev/js/zepto.js"></script>
     <script src="dev/js/onePage.js"></script>
     <script src="dev/js/hm.js"></script>
+    <script src="//cdn.bootcss.com/html2canvas/0.5.0-beta4/html2canvas.js"></script>
     <script src="dev/js/common.js"></script>
     <script>
     // 页面初始代码内容
     $(window).ready(function() {
+
         var h5m = new hm();
         //初始化
         $('#txt-ctrl').find('input,input,button').attr('disabled','');
@@ -307,7 +337,7 @@
 
         //系统操作
         $('#build').on('click', function() {
-            if ($('#pro-name').val() == '') {
+            if (!$('#pro-name').val().trim()) {
                 alert('输入项目名');
                 return;
             }
@@ -317,14 +347,20 @@
             }else{
                 type = 2;
             }
+            var isDownload = $('#bulid-isDownload').attr('checked');
+            var isPreview = $('#bulid-isPreview').attr('checked');
+            console.log( isPreview);
 
-            h5m.build(function(imgItems,html){
+            h5m.build(function(imgItems,audioItems,html,cssText){
                 var name = $('#pro-name').val();
                 var data = {
                     type:type,
                     name:name,
                     html:html,
-                    imgList:imgItems
+                    cssText:cssText,
+                    imgList:imgItems,
+                    audioList:audioItems,
+                    isDownload:isDownload
                 }
                 console.log(JSON.stringify(data));
                 $.ajax({
@@ -334,18 +370,20 @@
                     data:{data: JSON.stringify(data)},
                     success:function(res){
                         //alert(res);
-                        window.open("build/"+name)
+                        if(isPreview) window.open("build/"+name);
+                        if(isDownload) window.open("download.php?proname="+data.name);
                         console.log(res.val);
-
+                        alert('发布成功!'+"\n路径：build/"+name);
                     },
                     error:function(){
-                                    console.log("失败");
+                        alert("发布失败，可能存在同名项目。");
                     }
                 });
             });//删除当前选中元素
         })
         $('#addBg').on('change', function() {
-                h5m.addBg(this.files);
+            h5m.addBg(this.files);
+            $(this).val("")
         })
         $('#delBg').on('click', function() {
                 h5m.delBg();
@@ -362,17 +400,34 @@
         })
         $('#addPageBg').on('change', function() {
             h5m.addPageBg(this.files);
+            $(this).val("")
         })
         $('#delPageBg').on('click', function() {
                 h5m.delPageBg();
             })
+        $('#addMusic').on('change', function() {
+            h5m.addMusic(this.files);
+            $(this).val("")
+
+        })
+        $('#delBgMusic').on('click', function() {
+            h5m.delBgMusic();
+           
+        })
             //元素操作
         $('#addEl').on('change', function() {
             h5m.addImgEl(this.files);
+            $(this).val("")
         })
         $('#addElTxt').on('click', function() {
             var txt = $('#el-text').val();
             h5m.addTxtEl(txt);
+        }); 
+        $('#addElInput').on('click', function() {
+            h5m.addInputEl();
+        });
+        $('#addElBtn').on('click', function() {
+            h5m.addBtnEl();
         });
         $('#up').on('click', function() {
             h5m.indexSet('up');
@@ -406,6 +461,10 @@
                 $('#img-size').val(imgScale);
                 $('.img-size-dispaly').html(imgScale + '倍');
             }
+            else{
+                $('#img-size').val(1);
+                $('.img-size-dispaly').html(1 + '倍');
+            }
         });
         $('#font-size').on('mousemove', function() {
             $('.font-size-dispaly').html($(this).val() + 'em');
@@ -414,8 +473,29 @@
             }
 
         })
+        h5m.on("selectEl", function(el) {
+            var fontColor = el.find('p').css('color');
+            if (fontColor) {
+                $('#font-color').val(fontColor.colorHex());
+            }else{
+                $('#font-color').val('#000000');
+            }
+        })
+        //文字颜色
         $('#font-color').on('change', function() {
             h5m.setFontColor($(this).val());
+            $(this).val("");
+        })
+        //额外css
+        $('#addStyle').on('click',function(){
+            if(!$('#extraStyle').val().trim()){
+                alert('样式为空');
+                return;
+            }
+            h5m.addExtraStyle($('#extraStyle').val());
+        })
+        $('#delStyle').on('click',function(){
+            h5m.delStyle();
         })
 
         //动画设置

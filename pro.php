@@ -1,4 +1,5 @@
 <?php
+	
 	//获取数据
 	$data = json_decode($_POST["data"]);
 	//$data->name ：项目名字
@@ -26,8 +27,8 @@
 		recurse_copy($basePath.'js',$buildPath.$proName.'/js');
 		recurse_copy($basePath.'css',$buildPath.$proName.'/css');
 		recurse_copy($basePath.'images',$buildPath.$proName.'/images');
-		//修改index.html
 		copy($basePath."index.html",$buildPath.$proName.'/index.html');//复制index
+		//修改index.html
 		//替换 插入html
 		$str=file_get_contents($buildPath.$proName.'/index.html');//获取baseHtml 内容
 		$html=str_replace('{{$html}}',$data->html,$str);
@@ -36,6 +37,9 @@
 		$html=str_replace('{{$title}}',$data->name,$str);
 		file_put_contents($buildPath.$proName.'/index.html',$html);
 		
+		$str=file_get_contents($buildPath.$proName.'/index.html');//获取baseHtml 内容
+		$html=str_replace('{{$cssText}}',$data->cssText,$str);
+		file_put_contents($buildPath.$proName.'/index.html',$html);
 		//替换 插入imgPath
 		$imgPath = '';
 		for ($x=0; $x<count($data->imgList); $x++) {
@@ -50,15 +54,32 @@
 		$html=str_replace('{{$imgs}}',$imgPath,$str);
 		file_put_contents($buildPath.$proName.'/index.html',$html);
 		// base64 另存为图片
-
 		for ($i=0; $i<count($data->imgList); $i++) {
 		  	$base64_url =$data->imgList[$i]->src;
 		  	$base64 =substr(strstr($base64_url,','),1);//去除头部
 		  	$img = base64_decode($base64);
 		  	file_put_contents($buildPath.$proName.'/images/'.$data->imgList[$i]->id.'.'.$data->imgList[$i]->type, $img);
 		}
+		// base64 另存为audio
+		for ($i=0; $i<count($data->audioList); $i++) {
+		  	$base64_url =$data->audioList[$i]->src;
+		  	$base64 =substr(strstr($base64_url,','),1);//去除头部
+		  	$audio = base64_decode($base64);
+		  	file_put_contents($buildPath.$proName.'/'.$data->audioList[$i]->id.'.'.$data->audioList[$i]->type, $audio);
+		}
+		//zip
+		if($data->isDownload){
+			$filename  = $buildPath.$proName.'/'.$proName.'.zip';
 
-        echo json_encode(array('val' => "ok"));
+			$zip=new ZipArchive();
+			if($zip->open($filename, ZipArchive::OVERWRITE)=== TRUE){
+			    addFileToZip($buildPath.$proName, $zip); //调用方法，对要打包的根目录进行操作，并将ZipArchive的对象传递给方法
+			    $zip->close(); //关闭处理的zip文件
+			}
+		}
+
+
+        echo json_encode(array('val' =>"ok"));
         exit;
 	} 
 	else {
@@ -68,14 +89,6 @@
 
 	
 
-	//echo $proName;
-
-
-	// function get_password( $length = 4 ) 
-	// {
- //   	 	$str = substr(md5(time()), 0, $length);
- //   	 	return $str;
-	// }
 
 //recurse_copy("原文件夹","目录文件夹")
 	function recurse_copy($src,$dst) {  // 原目录，复制到的目录
@@ -93,3 +106,18 @@
 	        }
 	        closedir($dir);
 	    }
+
+//zip
+function addFileToZip($path,$zip){
+    $handler=opendir($path); //打开当前文件夹由$path指定。
+    while(($filename=readdir($handler))!==false){
+        if($filename != "." && $filename != ".."){//文件夹文件名字为'.'和‘..’，不要对他们进行操作
+            if(is_dir($path."/".$filename)){// 如果读取的某个对象是文件夹，则递归
+                addFileToZip($path."/".$filename, $zip);
+            }else{ //将文件加入zip对象
+                $zip->addFile($path."/".$filename);
+            }
+        }
+    }
+    @closedir($path);
+}

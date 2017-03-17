@@ -1,0 +1,114 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="Hx2">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="Description" content="网页描述" />
+    <meta name="Keywords" content="关键字" />
+    <title>2324</title>
+    <link rel="stylesheet" type="text/css" href="css/base.css">
+    <link rel="stylesheet" type="text/css" href="css/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="css/hm.css">
+    <link rel="stylesheet" type="text/css" href="css/swiper-3.3.1.min.css">
+    <style>
+#container{width:100%;height:100%;overflow:hidden;position:relative;max-width:800px;margin:0 auto}#loader{position:absolute;z-index:9999;top:0;left:0;width:100%;height:100%;text-align:center;color:#00577E;background:#DBF2FF}#loader .loader-wrap{position:absolute;top:30%;width:100%}#loader .loader-wrap .progress-bar{position:relative;width:60%;height:5px;margin:10px auto;border-radius:2px;background:#004367;overflow:hidden}#loader .loader-wrap .progress-bar .loading-ele{position:absolute;top:-48px;left:0;transition:left .5s ease}#loader .loader-wrap .progress-bar .progress-green{position:absolute;top:0;left:0;width:0;height:100%;transition:width .5s ease;border-radius:2px;background:#0B96E3}#loader .loader-wrap .progress-bar .progress-green-light{position:absolute;top:0;left:0;width:0;height:100%;transition:width .5s ease;border-radius:2px;background:#8B00BC;border-bottom-left-radius:100%;border-top-left-radius:100%;box-shadow:0 0 10px #8C9EFE}.mask{position:absolute;left:0;top:0;width:100%;height:100%;background-color:rgba(0,0,0,0.7)}.swiper-slide .hm-content{display:none}.swiper-slide-active .hm-content{display:block}.swiper-slide-active .hm-el{-webkit-animation-play-state:running;animation-play-state:running}.ang{width:100%;height:25px;position:absolute;left:0;bottom:10px;-webkit-animation:fadeInUp 1s ease infinite;animation:fadeInUp 1s ease infinite;background-image:url("images/ag.png");background-size:contain;background-position:center;background-repeat:no-repeat;z-index:98}
+    
+    </style>
+</head>
+
+<body>
+    <!-- loader -->
+    <div id="loader">
+        <div class="loader-wrap">
+            <div class="progress-bar">
+                <img class="loading-ele">
+                <div class="progress-green-light"></div>
+                <div class="progress-green"></div>
+            </div>
+            <p>加载中</p>
+            <p><span class="span" id="loading-txt">0</span></p>
+        </div>
+    </div>
+    <div id="container">
+        <div id="hm-container">
+                        <div class="hm-wrap">
+                            <div class="hm-page">
+                                <div class="hm-content">
+ </div>
+                            </div>
+                        </div>
+                    </div>
+    </div>
+    </div>
+    <div class="ang"></div>
+    <script src="js/lazyBones.min.js"></script>
+    <script src="js/swiper-3.3.1.jquery.min.js"></script>
+    
+    <script>
+    //init
+    new lb.Rotate();
+    $(document).ready(function() {
+
+        $('.hm-page').css('display','block');
+        var getSource = function() {
+            var sourceArr = [
+                
+            ];
+            return sourceArr;
+        }
+        new lb.Loader(getSource(), {
+            onLoading: function(cur, total) {
+                $('#loading-txt').html(parseInt(cur / total * 100) + '%');
+                $('.progress-green').css({
+                    'width': parseInt(cur / total * 100) + '%'
+                });
+                $('.progress-green-light').css({
+                    'width': parseInt(cur / total * 100) + '%',
+                    'box-shadow': '0 0 ' + parseInt(cur / total * 100) / 10 + 'px' + ' rgb(0, 211, 255)'
+                });
+                var progressWidth = $('.progress-bar').width() - 30;
+                $('.loading-ele').css({
+                    'left': parseInt(cur / total * 100) / 100 * progressWidth + 'px'
+                });
+            },
+            onComplete: function() {
+                setTimeout(function() {
+                    $("#loader").fadeOut(500);
+                    //$('.hm-page').eq(0).addClass('active');
+                    $('.hm-wrap').addClass('swiper-wrapper');
+                    $('.hm-page').addClass('swiper-slide');
+                     //swiper init
+                    var mySwiper = new Swiper('#hm-container', {
+                        direction: 'vertical',
+                        loop: false,
+                        autoplay:10000
+                    })
+                }, 500);
+                $('.hm-content').onePage();
+            },
+            loadType: 1,
+            minTime: 50
+        });
+        
+        //背景音乐控制
+        $('.hm-audio').on('touchstart',function(){
+            if($(this).hasClass('rotate')){
+                $(this).removeClass('rotate');
+                $(this).find('audio').get(0).pause();
+            }
+            else{
+                $(this).addClass('rotate');
+                $(this).find('audio').get(0).play();
+            }
+        })
+       
+    })
+    </script>
+</body>
+
+</html>

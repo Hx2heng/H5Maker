@@ -6,7 +6,7 @@
     width: 1220px;
     margin: 0 auto;
 }
-
+.ctrl-group{margin:10px;}
 /*page*/
 .page-top
 {
@@ -17,7 +17,7 @@
 }
 .logo
 {
-    font-size: 3em;
+    font-size: 2em;
     font-weight: bold;
 
     padding-left: 20px;

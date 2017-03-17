@@ -3256,3 +3256,29 @@
     -webkit-animation-name: zoomOutUp;
             animation-name: zoomOutUp;
 }
+@keyframes rota
+{
+    0%
+    {
+        transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+    }
+    100%
+    {
+       transform: rotate(360deg);
+        -webkit-transform: rotate(360deg);
+    }
+}
+@-webkit-keyframes rota
+{
+    0%
+    {
+        transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+    }
+    100%
+    {
+       transform: rotate(360deg);
+        -webkit-transform: rotate(360deg);
+    }
+}

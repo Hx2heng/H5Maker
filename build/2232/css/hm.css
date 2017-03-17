@@ -1,0 +1,87 @@
+.hm-hide{
+    display: none;
+}
+/*hm-container*/
+#hm-container
+{
+    width: 100%;
+    height: 100%;
+    
+    background-position: center;
+    background-size: cover;
+    position: absolute;
+}
+
+/*.hm-page*/
+.hm-page
+{
+    position: absolute;
+
+    width: 100%;
+    height: 100%;
+
+    -webkit-animation-play-state: paused;
+
+            animation-play-state: paused;
+
+    background-position: center;
+    background-size: cover;
+    overflow: hidden;
+}
+.hm-page .hm-content{
+    width: 640px;
+    height:1010px;
+}
+.hm-page .hm-el
+{
+    -webkit-animation-play-state: paused;
+            animation-play-state: paused;
+    text-align: center;
+    -webkit-animation-fill-mode: both;
+            animation-fill-mode: both;
+}
+.hm-page .hm-el p
+{ 
+    font-size: 2em;white-space:nowrap;
+}
+
+.hm-page .hm-el img
+{
+    display: block;
+}
+.hm-page .hm-el .hm-input
+{
+    padding: 10px;
+    font-size: 2em;
+    border:none;
+    border-radius: 8px;
+}
+.hm-page.active {
+    display: block;
+}
+.hm-page.active .hm-el
+{
+    -webkit-animation-play-state: running;
+            animation-play-state: running;
+}
+/*.hm-el*/
+.hm-el
+{
+    position: absolute;
+}
+/*audio*/
+.hm-audio {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    z-index: 200;
+    width: 30px;
+    height: 30px;
+    background-image: url(../images/normalmusic.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+.rotate {
+    -webkit-animation: rota 1.2s linear infinite;
+    animation: rota 1.2s linear infinite
+}
